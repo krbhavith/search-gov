@@ -494,4 +494,90 @@ http_interactions:
         XC9hcGkuYmluZy5taWNyb3NvZnQuY29tXC9hcGlcL3Y3XC8jV2ViUGFnZXMu
         MTkifX1dfX19
   recorded_at: Mon, 23 Oct 2023 20:51:03 GMT
+- request:
+    method: post
+    uri: https://api.datadoghq.com/api/v1/events?api_key=<DATADOG_API_KEY>
+    body:
+      encoding: UTF-8
+      base64_string: |
+        eyJtc2dfdGV4dCI6IiUlJVxuIyMjICoqUmVxdWVzdCoqXG4qKlVSTDoqKiBo
+        dHRwOi8vMTI3LjAuMC4xOjU3NjU0L3NlYXJjaD9hZmZpbGlhdGU9ZW4uYWdl
+        bmN5LmdvdiZxdWVyeT1jb2xsZWN0aW9uXG4qKkhUVFAgTWV0aG9kOioqIEdF
+        VFxuKipJUCBBZGRyZXNzOioqIDEyNy4wLjAuMVxuKipQYXJhbWV0ZXJzOioq
+        IHtcImFmZmlsaWF0ZVwiPT5cImVuLmFnZW5jeS5nb3ZcIiwgXCJxdWVyeVwi
+        PT5cImNvbGxlY3Rpb25cIiwgXCJjb250cm9sbGVyXCI9Plwic2VhcmNoZXNc
+        IiwgXCJhY3Rpb25cIj0+XCJpbmRleFwiLCBcImZvcm1hdFwiPT5cImh0bWxc
+        In1cbioqVGltZXN0YW1wOioqIDIwMjQtMDEtMTAgMTc6NTg6MjQgVVRDXG4q
+        KlNlcnZlcjoqKiBCaGF2aXRocy1NYWNCb29rLVByby0yLmxvY2FsXG4qKlJh
+        aWxzIHJvb3Q6KiogL1VzZXJzL2JoYXZpdGgvd29ya3NwYWNlL3NlYXJjaC1n
+        b3ZcbioqUHJvY2VzczoqKiA3NTA1NlxuX19fXG4jIyMgKipTZXNzaW9uKipc
+        bioqRGF0YToqKiB7fVxuX19fXG4jIyMgKipCYWNrdHJhY2UqKlxuYGBgYFxu
+        YXBwL2hlbHBlcnMvcmVhY3RfaGVscGVyLnJiOjIxNjppbiBgYmxvY2sgaW4g
+        cmVqZWN0X2tleXNfZnJvbV9oYXNoJ1xuYXBwL2hlbHBlcnMvcmVhY3RfaGVs
+        cGVyLnJiOjIxNTppbiBgZWFjaCdcbmFwcC9oZWxwZXJzL3JlYWN0X2hlbHBl
+        ci5yYjoyMTU6aW4gYHJlamVjdF9rZXlzX2Zyb21faGFzaCdcbmBgYGBcbl9f
+        X1xuJSUlIiwiZGF0ZV9oYXBwZW5lZCI6MTcwNDkwOTUwNCwibXNnX3RpdGxl
+        Ijoic2VhcmNoZXMgaW5kZXggKEFjdGlvblZpZXc6OlRlbXBsYXRlOjpFcnJv
+        cikgXCJ1bmRlZmluZWQgbWV0aG9kIGByZWplY3QhJyBmb3IgIzxGZWRlcmFs
+        UmVnaXN0ZXJEb2N1bWVudCBpZDogMSwgZG9jdW1lbnRfbi4uLiIsInByaW9y
+        aXR5Ijoibm9ybWFsIiwicGFyZW50IjpudWxsLCJ0YWdzIjpbXSwiYWdncmVn
+        YXRpb25fa2V5IjoiW1wic2VhcmNoZXMgaW5kZXggKEFjdGlvblZpZXc6OlRl
+        bXBsYXRlOjpFcnJvcikgXFxcInVuZGVmaW5lZCBtZXRob2QgYHJlamVjdCEn
+        IGZvciAjPEZlZGVyYWxSZWdpc3RlckRvY3VtZW50IGlkOiAxLCBkb2N1bWVu
+        dF9uLi4uXCJdIiwiYWxlcnRfdHlwZSI6ImVycm9yIiwiZXZlbnRfdHlwZSI6
+        bnVsbCwic291cmNlX3R5cGVfbmFtZSI6bnVsbCwidGl0bGUiOiJzZWFyY2hl
+        cyBpbmRleCAoQWN0aW9uVmlldzo6VGVtcGxhdGU6OkVycm9yKSBcInVuZGVm
+        aW5lZCBtZXRob2QgYHJlamVjdCEnIGZvciAjPEZlZGVyYWxSZWdpc3RlckRv
+        Y3VtZSIsInRleHQiOiIlJSVcbiMjIyAqKlJlcXVlc3QqKlxuKipVUkw6Kiog
+        aHR0cDovLzEyNy4wLjAuMTo1NzY1NC9zZWFyY2g/YWZmaWxpYXRlPWVuLmFn
+        ZW5jeS5nb3YmcXVlcnk9Y29sbGVjdGlvblxuKipIVFRQIE1ldGhvZDoqKiBH
+        RVRcbioqSVAgQWRkcmVzczoqKiAxMjcuMC4wLjFcbioqUGFyYW1ldGVyczoq
+        KiB7XCJhZmZpbGlhdGVcIj0+XCJlbi5hZ2VuY3kuZ292XCIsIFwicXVlcnlc
+        Ij0+XCJjb2xsZWN0aW9uXCIsIFwiY29udHJvbGxlclwiPT5cInNlYXJjaGVz
+        XCIsIFwiYWN0aW9uXCI9PlwiaW5kZXhcIiwgXCJmb3JtYXRcIj0+XCJodG1s
+        XCJ9XG4qKlRpbWVzdGFtcDoqKiAyMDI0LTAxLTEwIDE3OjU4OjI0IFVUQ1xu
+        KipTZXJ2ZXI6KiogQmhhdml0aHMtTWFjQm9vay1Qcm8tMi5sb2NhbFxuKipS
+        YWlscyByb290OioqIC9Vc2Vycy9iaGF2aXRoL3dvcmtzcGFjZS9zZWFyY2gt
+        Z292XG4qKlByb2Nlc3M6KiogNzUwNTZcbl9fX1xuIyMjICoqU2Vzc2lvbioq
+        XG4qKkRhdGE6Kioge31cbl9fX1xuIyMjICoqQmFja3RyYWNlKipcbmBgYGBc
+        bmFwcC9oZWxwZXJzL3JlYWN0X2hlbHBlci5yYjoyMTY6aW4gYGJsb2NrIGlu
+        IHJlamVjdF9rZXlzX2Zyb21faGFzaCdcbmFwcC9oZWxwZXJzL3JlYWN0X2hl
+        bHBlci5yYjoyMTU6aW4gYGVhY2gnXG5hcHAvaGVscGVycy9yZWFjdF9oZWxw
+        ZXIucmI6MjE1OmluIGByZWplY3Rfa2V5c19mcm9tX2hhc2gnXG5gYGBgXG5f
+        X19cbiUlJSIsImhvc3QiOiJCaGF2aXRocy1NYWNCb29rLVByby0yLmxvY2Fs
+        IiwiZGV2aWNlIjpudWxsfQ==
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - dogapi-rb/1.45.0 (ruby 3.0.6; os darwin22; arch x86_64)
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 403
+      message: Forbidden
+    headers:
+      Date:
+      - Wed, 10 Jan 2024 17:58:24 GMT
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '169'
+      Connection:
+      - keep-alive
+      X-Content-Type-Options:
+      - nosniff
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+    body:
+      encoding: UTF-8
+      base64_string: |
+        eyJzdGF0dXMiOiJlcnJvciIsImNvZGUiOjQwMywiZXJyb3JzIjpbIkZvcmJp
+        ZGRlbiJdLCJzdGF0dXNwYWdlIjoiaHR0cDovL3N0YXR1cy5kYXRhZG9naHEu
+        Y29tIiwidHdpdHRlciI6Imh0dHA6Ly90d2l0dGVyLmNvbS9kYXRhZG9nb3Bz
+        IiwiZW1haWwiOiJzdXBwb3J0QGRhdGFkb2docS5jb20ifQ==
+  recorded_at: Wed, 10 Jan 2024 17:58:24 GMT
 recorded_with: VCR 6.2.0
