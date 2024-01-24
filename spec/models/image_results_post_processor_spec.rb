@@ -7,6 +7,10 @@ describe ImageResultsPostProcessor do
     let(:affiliate) { affiliates(:basic_affiliate) }
 
     context 'when results have all attributes' do
+      before do
+        affiliate.search_engine = 'SearchGov'
+      end
+
       let(:total_results) { 5 }
       let(:results) do
         results = []
