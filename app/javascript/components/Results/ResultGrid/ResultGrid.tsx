@@ -45,9 +45,9 @@ export const ResultGrid = ({ vertical, result }: ResultProps) => {
   return (
     <GridContainer className='result search-result-item'>
       <Grid row gap="md">
-        {vertical === 'image' &&
+        {result.thumbnailUrl &&
         <Grid mobileLg={{ col: 4 }} className='result-thumbnail'>
-          <img src={result.thumbnailUrl} className="result-image" alt={result.title}/>
+          <img src={result.thumbnailUrl} className="result-image result-youtube-thumbnail" alt={result.title}/>
         </Grid>
         }
         <Grid col={true} className='result-meta-data'>

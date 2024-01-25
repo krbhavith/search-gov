@@ -27,12 +27,8 @@ class ImageResultsPostProcessor < ResultsPostProcessor
         altText: result['title'],
         url: result['url'],
         thumbnailUrl: result['thumbnail']['url'],
-        image: show_image
+        image: true
       }.compact
     end
-  end
-
-  def show_image
-    show_results_format?(@affiliate) ? @affiliate.display_image_on_search_results? : true
   end
 end
