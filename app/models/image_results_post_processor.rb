@@ -1,13 +1,10 @@
 # frozen_string_literal: true
 
 class ImageResultsPostProcessor < ResultsPostProcessor
-  include VisualDesignHelper
-
-  def initialize(total_results, results, affiliate)
+  def initialize(total_results, results)
     super
     @total_results = total_results
     @results = results
-    @affiliate = affiliate
   end
 
   def normalized_results

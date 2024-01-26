@@ -3,7 +3,7 @@
 module ReactHelper
   def search_results_layout(search, params, vertical, affiliate, search_options)
     data = {
-      additionalResults: govbox_set_data(search),
+      additionalResults: search.govbox_set,
       agencyName: agency_name(affiliate.agency),
       alert: search_page_alert(affiliate.alert),
       extendedHeader: affiliate.use_extended_header,
@@ -195,27 +195,6 @@ module ReactHelper
     return if agency.nil?
 
     agency.abbreviation || agency.name
-  end
-
-  def govbox_set_data(search)
-    return if search.govbox_set.nil?
-
-    affiliate = search.affiliate
-    govbox_set_json = search.govbox_set.as_json
-    if show_results_format?(affiliate) && !affiliate.display_created_date_on_search_results?
-      reject_keys_from_hash(govbox_set_json[:federalRegisterDocuments], 'publication_date') if govbox_set_json[:federalRegisterDocuments].present?
-      reject_keys_from_hash(govbox_set_json[:newsItems], 'published_at') if govbox_set_json[:newsItems].present?
-      reject_keys_from_hash(govbox_set_json[:youtubeNewsItems], 'published_at') if govbox_set_json[:youtubeNewsItems].present?
-    end
-    govbox_set_json
-  end
-
-  def reject_keys_from_hash(results, key)
-    return if results.blank?
-
-    results.map do |result|
-      result.delete(key)
-    end
   end
 
   def results_data(search)

@@ -2,15 +2,9 @@ require 'spec_helper'
 
 describe ImageResultsPostProcessor do
   describe '#normalized_results' do
-    subject(:normalized_results) { described_class.new(total_results, results, affiliate).normalized_results }
-
-    let(:affiliate) { affiliates(:basic_affiliate) }
+    subject(:normalized_results) { described_class.new(total_results, results).normalized_results }
 
     context 'when results have all attributes' do
-      before do
-        affiliate.search_engine = 'SearchGov'
-      end
-
       let(:total_results) { 5 }
       let(:results) do
         results = []
@@ -24,7 +18,7 @@ describe ImageResultsPostProcessor do
           expect(result[:altText]).to eq("title #{index}")
           expect(result[:url]).to eq("http://foo.gov/#{index}")
           expect(result[:thumbnailUrl]).to eq('http://bar.gov/image.png')
-          expect(result[:image]).to eq(affiliate.display_image_on_search_results)
+          expect(result[:image]).to eq(true)
         end
       end
 

@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class GovboxSet
+  include VisualDesignHelper
+
   DEFAULT_JOB_HIGHLIGHTING_OPTIONS = {
     pre_tags: %w[<strong>],
     post_tags: %w[</strong>]
@@ -60,6 +62,15 @@ class GovboxSet
 
   private
 
+  def reject_keys_from_hash(results, key)
+    show_results_format?(@affiliate)
+    return if results.blank? || !show_results_format?(@affiliate)
+
+    results.map do |result|
+      result.delete(key)
+    end
+  end
+
   def translate_highlights(body)
     body&.gsub(/\uE000/, '<strong>')&.gsub(/\uE001/, '</strong>')
   end
@@ -82,11 +93,14 @@ class GovboxSet
   def format_video_news_items
     return unless videos_exist?
 
-    raw_video_results&.each do |result|
+    results = raw_video_results&.each do |result|
       result[:published_at] = result[:published_at].to_datetime.to_fs(:long)
       result[:title] = translate_highlights(result[:title])
       result[:description] = truncate_description(translate_highlights(result[:description]))
     end
+    return results unless @affiliate.display_created_date_on_search_results?
+
+    reject_keys_from_hash(results, :published_at)
   end
 
   def raw_video_results
@@ -103,7 +117,7 @@ class GovboxSet
   def format_new_news
     return unless fresh_news_items?
 
-    @news_items&.results&.first(3)&.map do |news_item|
+    results = @news_items&.results&.first(3)&.map do |news_item|
       {
         title: translate_highlights(news_item.title),
         description: news_item.description,
@@ -111,12 +125,15 @@ class GovboxSet
         publishedAt: news_item.published_at.to_date
       }
     end
+    return results unless @affiliate.display_created_date_on_search_results?
+
+    reject_keys_from_hash(results, :published_at)
   end
 
   def format_old_news
     return nil if fresh_news_items?
 
-    @news_items&.results&.first(3)&.map do |news_item|
+    results = @news_items&.results&.first(3)&.map do |news_item|
       {
         title: translate_highlights(news_item.title),
         description: news_item.description,
@@ -124,6 +141,9 @@ class GovboxSet
         publishedAt: news_item.published_at.to_date
       }
     end
+    return results unless @affiliate.display_created_date_on_search_results?
+
+    reject_keys_from_hash(results, :published_at)
   end
 
   def format_text_best_bets
@@ -135,7 +155,10 @@ class GovboxSet
   def format_graphics_best_bet
     return if @affiliate.featured_collections.empty?
 
-    @featured_collections&.results&.first&.as_json&.except(:id)
+    results = @featured_collections&.results&.first&.as_json&.except(:id)
+    return results unless @affiliate.display_image_on_search_results?
+
+    reject_keys_from_hash(results, :image_url)
   end
 
   def format_jobs
@@ -175,7 +198,11 @@ class GovboxSet
 
   def format_federal_register_documents
     frds = @federal_register_documents&.results&.first(3)&.map { |frd| frd.slice(:title, :document_type, :document_number, :publication_date, :comments_close_on, :start_page, :end_page, :page_length, :contributing_agency_names, :html_url) }
-    format_frd_dates(frds)
+    results = format_frd_dates(frds)
+
+    return results unless @affiliate.display_created_date_on_search_results?
+
+    reject_keys_from_hash(results, :publication_date)
   end
 
   def format_frd_dates(frds)
