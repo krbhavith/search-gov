@@ -6,7 +6,7 @@ class CustomFontAndColorThemeUpdater
   CSS_PROPERTY_COLOR  = [:search_button_background_color, :header_links_background_color, :header_text_color, :footer_background_color, :footer_background_color, :footer_links_text_color, :footer_links_text_color, :footer_links_text_color, :navigation_background_color, :left_tab_text_color, :navigation_link_color, :navigation_link_color, :header_tagline_background_color, :header_tagline_color, :title_link_color, :visited_title_link_color, :url_link_color, :description_text_color, '#ffffff'].freeze
 
   def update(args)
-    ids = args == 'all' ? Affiliate.all.ids : args.split
+    ids = args == 'all' ? Affiliate.where.not(visual_design_json: nil).ids : args.split
     update_custom_font_and_color_theme(ids)
   end
 
@@ -28,27 +28,26 @@ class CustomFontAndColorThemeUpdater
   end
 
   def update_font_and_color(affiliate)
-    next if affiliate.theme == 'default' || affiliate.visual_design_json != Affiliate::DEFAULT_VISUAL_DESIGN
-
-    update_font_family(affiliate)
+    return if affiliate.theme == 'default' || affiliate.visual_design_json != Affiliate::DEFAULT_VISUAL_DESIGN
+    # update_font_family(affiliate)
     update_affiliate_custom_color_theme(affiliate)
     affiliate.save
   end
 
-  def update_font_family(affiliate)
-    font_family = affiliate.css_property_hash[:font_family]
-    VISUAL_DESIGN_FONT.each do |font_key|
-      affiliate.visual_design_json[font_key] = get_font_family(font_family)
-    end
-  end
+  # def update_font_family(affiliate)
+  #   font_family = affiliate.css_property_hash[:font_family]
+  #   VISUAL_DESIGN_FONT.each do |font_key|
+  #     affiliate.visual_design_json[font_key] = get_font_family(font_family)
+  #   end
+  # end
 
-  def get_font_family(font_family)
-    "Public Sans Web', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'" if font_family == 'Arial, sans-serif'
-    "'Helvetica Neue', 'Helvetica', 'Roboto', 'Arial', sans-serif" if font_family == 'Helvetica, sans-serif'
-    "'Tahoma', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'" if font_family == 'Tahoma, Verdana, Arial, sans-serif'
-    "'Public Sans Web', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'" if font_family == '"Trebuchet MS", sans-serif'
-    "'Public Sans Web', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'" if font_family == 'Verdana, sans-serif'
-  end
+  # def get_font_family(font_family)
+  #   "Public Sans Web', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'" if font_family == 'Arial, sans-serif'
+  #   "'Helvetica Neue', 'Helvetica', 'Roboto', 'Arial', sans-serif" if font_family == 'Helvetica, sans-serif'
+  #   "'Tahoma', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'" if font_family == 'Tahoma, Verdana, Arial, sans-serif'
+  #   "'Public Sans Web', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'" if font_family == '"Trebuchet MS", sans-serif'
+  #   "'Public Sans Web', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'" if font_family == 'Verdana, sans-serif'
+  # end
 
   def update_affiliate_custom_color_theme(affiliate)
     VISUAL_DESIGN.each_with_index do |vd, index|
